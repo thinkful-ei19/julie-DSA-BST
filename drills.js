@@ -145,7 +145,7 @@ function main() {
         bst.insert(2, null)
         bst.insert(5, null)
         bst.insert(7, null)
-        
+        bst.left.left=20;
         console.log(findHeight(bst));
 }
 
@@ -177,11 +177,23 @@ function sarahHeight(bst) {
 }
 
 
+//everything on left is less, everything on right is greater
+// check the nodes 
 function isBST(bst) {
+    if (!bst) {
+        return true;
+    }
+    if (!bst.left && !bst.right) { //hit a leaf
+        return true;
+    } else if (bst.left > bst.key || bst.right < bst.key) { //if left is greater than key OR R is less, it's a no
+        return false;
+    } else if (bst.left && bst.right) { //if there is l & r, return both recursive values
+        return isBST(bst.left) && isBST(bst.right);
+    } else if (bst.left) {
+        return isBST(bst.left);
+    } else if (bst.right) {
+        return isBST(bst.right);
+    }
 
 }
 
-
-// binary tree
-//everything on left is less, everything on right is greater
-// check the nodes 
