@@ -200,17 +200,25 @@ function sarahHeight(bst) {
 
 //everything on left is less, everything on right is greater
 // check the nodes 
-function isItBst2(bst) {
-    if (bst.left.value > bst.value) {
+function isBST(bst) {
+    if(bst.left) {
+      if(bst.left.key > bst.key) {
         return false;
-    }
-    if (bst.right.value < bst.value) {
+      }
+      if(!isbst(bst.left)) {
         return false;
+      }
     }
-    else {
-        return true;
+    if(bst.right) {
+      if(bst.right.key < bst.key) {
+        return false;
+      }
+      if(!isbst(bst.right)) {
+        return false;
+      }
     }
-}
+    return true;
+  }
 
 function isBST(bst) {
 
