@@ -153,7 +153,7 @@ function main() {
         // bst.insert(2, null)
         // bst.insert(5, null)
         // bst.insert(7, null)
-        console.log(isBST(bst));
+        // console.log(isBST(bst));
         // console.log(isBST(bst));
 }
 
@@ -248,7 +248,17 @@ function isBST(bst) {
 
 }
 
-
-function thirdLargestNode(bst) {
-
+function sortNodes(root, nodes) {
+    let queue = [root];
+    while (queue.length > 0) {
+        // front of queue is at element 0 and push elements to back of queue
+        let n = queue.shift();
+        nodes.push(n.data);
+        if (n.left !== null) { queue.push(n.left); }
+        if (n.right !== null) { queue.push(n.right); }
+    }
+    return nodes;
 }
+
+console.log(sortNodes(root, []));
+
