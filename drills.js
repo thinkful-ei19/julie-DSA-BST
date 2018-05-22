@@ -166,8 +166,20 @@ function findHeight(bst) {
     }
 }
 
+function sarahHeight(bst) {
+    if (bst === null) {
+        return 0;
+    } else if (!bst.left && !bst.right) { //if no L or R, -> leaf nodes 
+        return 1;
+    } else if (bst.left || bst.right) { //has L/R or both
+        return Math.max(sarahHeight(bst.left), sarahHeight(bst.right)) + 1;
+    }
+}
 
 
+function isBST(bst) {
+
+}
 
 
 // binary tree
