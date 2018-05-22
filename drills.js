@@ -139,13 +139,13 @@ function main() {
     let bst = new BinarySearchTree();
         bst.insert(3, null)
         bst.insert(1, null)
-        // bst.insert(4, null)
-        // bst.insert(6, null)
+        bst.insert(4, null)
+        bst.insert(6, null)
         // bst.insert(9, null)
         // bst.insert(2, null)
         // bst.insert(5, null)
         // bst.insert(7, null)
-        
+        console.log(isBST(bst));
         // console.log(isBST(bst));
 }
 
@@ -192,24 +192,37 @@ function sarahHeight(bst) {
 
 //everything on left is less, everything on right is greater
 // check the nodes 
+function isItBst2(bst) {
+    if (bst.left.value > bst.value) {
+        return false;
+    }
+    if (bst.right.value < bst.value) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 function isBST(bst) {
-    // if (!bst) {
-    //     return true;
-    // }
+
     if (!bst.left && !bst.right) { //hit a leaf
         return true;
     } 
 
-
-    if (bst.left.key > bst.key) {
-        return false;
+    //if left is greater than key OR R is less, it's a no
+    if(bst.left) {
+        if(bst.left.key > bst.key) {
+            return false;
+        }
     }
-    // } else if (bst.left > bst.key || bst.right < bst.key) { //if left is greater than key OR R is less, it's a no
-    //     return false;
-    // }
-    // } else if (bst.left && bst.right) { //if there is l & r, return both recursive values
-    //     return isBST(bst.left) + isBST(bst.right);
-    // } 
+    if(bst.right) {
+        if(bst.right.key < bst.key) {
+            return false;
+        } 
+    } else if (bst.left && bst.right) { //if there is l & r, return both recursive values
+        return isBST(bst.left) + isBST(bst.right);
+    } 
     else if (bst.left) {
         return isBST(bst.left);
     
@@ -219,8 +232,6 @@ function isBST(bst) {
 
 }
 
-
-console.log(isBST(bad));
 
 function thirdLargestNode(bst) {
 
