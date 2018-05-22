@@ -145,7 +145,31 @@ function main() {
         bst.insert(2, null)
         bst.insert(5, null)
         bst.insert(7, null)
-        console.log(bst);
+        
+        console.log(findHeight(bst));
 }
 
 main();
+
+
+function findHeight(bst) {
+    if (!bst) {
+        return 0;
+    }
+    let leftHeight = findHeight(bst.left);
+    let rightHeight = findHeight(bst.right);
+
+    if(leftHeight>rightHeight) {
+        return leftHeight + 1;
+    } else {
+        return rightHeight + 1;
+    }
+}
+
+
+
+
+
+// binary tree
+//everything on left is less, everything on right is greater
+// check the nodes 
