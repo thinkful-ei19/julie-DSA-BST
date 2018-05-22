@@ -134,3 +134,18 @@ class BinarySearchTree {
         return this.left._findMin();
     }
 }
+
+function main() {
+    let bst = new BinarySearchTree();
+        bst.insert(3, null)
+        bst.insert(1, null)
+        bst.insert(4, null)
+        bst.insert(6, null)
+        bst.insert(9, null)
+        bst.insert(2, null)
+        bst.insert(5, null)
+        bst.insert(7, null)
+        console.log(bst);
+}
+
+main();
