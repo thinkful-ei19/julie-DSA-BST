@@ -249,16 +249,34 @@ function isBST(bst) {
 }
 
 function sortNodes(root, nodes) {
-    let queue = [root];
-    while (queue.length > 0) {
-        // front of queue is at element 0 and push elements to back of queue
-        let n = queue.shift();
+    let list = [root];
+    while (list.length > 0) {
+        // front of list is at element 0 and push elements to back of list
+        let n = list.shift();
         nodes.push(n.data);
-        if (n.left !== null) { queue.push(n.left); }
-        if (n.right !== null) { queue.push(n.right); }
+        if (n.left !== null) { list.push(n.left); }
+        if (n.right !== null) { list.push(n.right); }
     }
     return nodes;
 }
 
 console.log(sortNodes(root, []));
+
+function third(bst) {
+    let counter = 1
+    let max = bst._findMax();
+    let dad = max.dad;
+    
+    while (count < 3) {
+        if (max.left) {
+            max = max.left;
+            counter++;
+        } else {
+            max = dad;
+            dad = max.dad;
+            counter++;
+        }
+    }
+    return max.key;
+}
 
